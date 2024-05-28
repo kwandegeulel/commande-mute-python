@@ -22,15 +22,14 @@ async def mute(ctx: commands.Context, user: discord.Member, duration: int, *, re
     active_timeouts[user.id] = ctx.guild.id
 
     server_embed = discord.Embed(title="Utilisateur Mute", description=f"{user.display_name} a été mis en sourdine sur {ctx.guild.name}.", color=0x000000)
-    server_embed.add_field(name=">>> Raison :", value=reason or "Aucune raison spécifiée")
+    server_embed.add_field(name="Raison :", value=reason or "Aucune raison spécifiée")
     server_embed.add_field(name="Auteur du mute :", value=f"||{ctx.author.mention}||", inline=True)
     server_embed.add_field(name="Temps :", value=f"{duration} minutes")
     server_embed.set_footer(text=f"Action effectuée par {ctx.author.name}", icon_url=ctx.author.display_avatar.url)
-    server_embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/1106275941346455726/1243234765411323904/mettre-en-sourdine.png")
     await ctx.send(embed=server_embed)
 
     dm_embed = discord.Embed(title="Vous avez été mis en sourdine", description=f"Vous avez été mis(e) en sourdine sur le serveur {ctx.guild.name}.", color=0x000000)
-    dm_embed.add_field(name=">>> Raison :", value=reason or "Aucune raison spécifiée")
+    dm_embed.add_field(name="Raison :", value=reason or "Aucune raison spécifiée")
     dm_embed.add_field(name="Temps :", value=f"{duration} minutes")
     dm_embed.add_field(name="Auteur du mute :", value=f"||{ctx.author.mention}||", inline=True)
     dm_embed.set_thumbnail(url=ctx.guild.icon.url)
